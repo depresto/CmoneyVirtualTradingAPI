@@ -1,15 +1,12 @@
 # CMoney Virtual Trading API / Cmoney 股市大富翁 API
 
-
-
 提供
 
-## Programming language 程式語言
+## System requirements 系統需求
+
+### Programming language & packages 程式語言&套件
 
 Python 3.6
-
-
-## Package requirements 套件需求
 
 - bs4
 - requests
@@ -34,6 +31,13 @@ Initialize 初始化
 from cmoneyvtapi import FuturesExchange
 
 fut = FuturesExchange(username, password)
+
+if (fut.session == None):
+	print("Login error")
+else:
+	'''
+	Your code
+	'''
 ```
 
 
@@ -41,9 +45,9 @@ Get all today's order records 取得所有今日委託記錄
 
 ```python
 # If look up self record
-# accountId = None 
-# or accountId = user ID
-fut.getOrder(accountId = None)
+# accountId = None or accountId = user ID
+
+fut.getOrder(accountId= None)
 
 ''' Example return
 [{
@@ -78,8 +82,9 @@ Get all transactions in a specific period of time (from n days ago).
 
 ```python
 # If look up self record
-#  	accountId = None or accountId = user ID
+# accountId = None or accountId = user ID
 # days: n days ago
+
 fut.getTransaction(accountId= None, days= None)
 
 ''' Example return
@@ -108,5 +113,38 @@ fut.getTransaction(accountId= None, days= None)
 	'Color': 'c2', 
 	'Cost': '166,000'
 }]}
+'''
+```
+
+Get all realized gains and losses in a specific period of time (from n days ago).
+取得特定時間內已實現損益 (n天前 ~ 今天)
+
+```python
+# If look up self record
+# accountId = None or accountId = user ID
+# days: n days ago
+
+fut.getProfit(accountId= None, days= None)
+
+'''Example return
+[{
+	'KindType': 1, 
+	'CombinationType': 0, 
+	'Id': 'TXFD8', 
+	'Name': '臺指期', 
+	'IQty': '3', 
+	'Month': '201804', 
+	'ShowBs': '買進<br>賣出', 
+	'Cp': 'None', 
+	'BuyAvgPr': '10,796.33', 
+	'SellAvgPr': '10,795.00', 
+	'SellTotal': '248,202', 
+	'BuyTotal': '249,000', 
+	'IncomeLoss': '-1,356', 
+	'Ratio': '-0.54', 
+	'Fee': '300', 
+	'Tax': '258', 
+	'Key': 'TXF'
+}]
 '''
 ```
