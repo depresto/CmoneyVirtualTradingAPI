@@ -26,7 +26,7 @@ cd CmoneyVirtualTradingAPI
 
 ## Usage 使用說明
 
-###Futures exchange simulation 期貨模擬交易
+### Futures exchange simulation 期貨模擬交易
 
 Initialize 初始化
 
